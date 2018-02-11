@@ -25,4 +25,4 @@ def secuencia_explociones(n):
     for x in range(0,n):
         explotar()
 
-secuencia_explociones(2)
+secuencia_explociones(15)
