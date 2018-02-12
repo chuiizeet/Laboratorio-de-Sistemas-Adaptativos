@@ -25,6 +25,27 @@ def explotar(n,posx,posy,rad):
             screen.set_at((int(x), int(y)), (Colores[n])) #Color
         pygame.display.flip()
 
+def explosiones2():
+    numExp = 12
+    coordx = 0
+    coordy = 400
+    radio = 50
+    Color = 255, 102, 255
+    for i in range(numExp):
+        coordx += 50
+        explotar2(coordx,coordy,radio,Color)
+
+def explotar2(cx, cy, r, c):
+	for i in range(r):
+		screen.fill((0,0,0))
+		for speed, angle in particles:
+			distance = i * speed
+			x = cx + distance * math.cos(angle)
+			y = cy + distance * math.sin(angle)
+			screen.set_at((int(x), int(y)), c)
+		pygame.display.flip()
+
+
 #Funcion Secuencia_explociones
 def secuencia_explociones(n):
     for x in range(0,n):
@@ -56,6 +77,9 @@ def main():
     if len(sys.argv) == 1:
         print("Explosiones random")
         secuencia_explociones(12)
+        explosiones2()
     else:
         secuencia_explociones(int(sys.argv[1]))
+        explosiones2()
+
 main()
