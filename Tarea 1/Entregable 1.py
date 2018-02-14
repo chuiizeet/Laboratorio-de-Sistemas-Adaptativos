@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-import math
-import random
-import pygame
-=======
 #Problema!
 import math
 import random
 import pygame
 import sys
->>>>>>> JesusGuerra
 
 pygame.init()
 
@@ -77,6 +71,27 @@ def secuencia_explociones_linea():
         c += 1
         explotar(c,x,y,rad)
 
+#Funcion secuencia explosciones cuadrado
+def secuencia_explociones_square():
+    posx=100
+    posy=100
+
+    for x in range(1,19):
+        if x<=5:
+            posy += x*20
+            explotar(1,posx,posy,40)
+        else:
+            if x<=9:
+                posx += x*20
+                explotar(1,posx,posy,40)
+            else:
+                if x<=14:
+                    posy -= (x-9)*20
+                    explotar(1,posx,posy,40)
+                else:
+                    if x <= 19:
+                        posx -= (x-9)*20
+                        explotar(1,posx,posy,40)
 
 #Main
 def main():
@@ -87,5 +102,6 @@ def main():
     else:
         secuencia_explociones(int(sys.argv[1]))
         explosiones2()
+    secuencia_explociones_square()
 
 main()
